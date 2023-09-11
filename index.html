@@ -60,13 +60,22 @@
     </form>
     
     <script>
+        const users = [
+            { username: "adm", password: "123" },
+            { username: "felipe", password: "FE123" },
+	    { username: "gerson", password: "GE123" },
+            // Adicione mais usuários aqui
+        ];
+
         document.getElementById("login-form").addEventListener("submit", function (e) {
             e.preventDefault();
             
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             
-            if (username === "adm" && password === "123") {
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
                 localStorage.setItem("loggedInUsername", username);
                 window.location.href = "estoque.html";
             } else {
